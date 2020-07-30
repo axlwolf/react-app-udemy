@@ -48,6 +48,23 @@ class Text extends Component {
   }
 }
 
+// Props por defecto
+class DefaultProps extends Component {
+  render() {
+    return(
+      <h4>
+        <strong>
+          {this.props.title}
+        </strong>
+      </h4>
+    )
+  }
+}
+
+DefaultProps.defaultProps = {
+  title: 'Título por defecto.'
+}
+
 class App extends Component {
   render() {
     return (
@@ -74,6 +91,7 @@ class App extends Component {
             }
             title={<h1>Que paso con esta propiedad</h1>}
             />
+          <DefaultProps title='Otro titulo desde props.' />
         </header>
       </div>
     );
