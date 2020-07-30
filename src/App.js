@@ -3,17 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 
 class Counter extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     counter: 1
-  //   }
-  // }
-  // haz que ese constructor desaparezca!
-  // usa las nuevas Class Fields para inicializar el state
-  // como te indica este post: http://aprendiendoreact.com/post/como-inicializar-el-state-de-un-componente-con-class-properties/
-  state = {
-    counter: 1
+  constructor() {
+    super();
+    this.state = {
+      counter: 1
+    };
+    setInterval(() => {
+      this.setState({
+       counter: this.state.counter + 1
+      });
+     }, 1000);
   }
 
   render() {
