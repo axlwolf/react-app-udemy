@@ -7,6 +7,16 @@ const Wellcome = (props) => {
   return <h1>Bienvenido {props.name} a este curso</h1>
 }
 
+class Learn extends Component {
+  render() {
+    return (
+      <p className="App-link">
+        Vamos a aprender {this.props.framework}
+      </p>
+    )
+  }
+}
+
 class App extends Component {
   render() {
     return (
@@ -14,11 +24,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <Wellcome name='Axel'/>
-          <p
-            className="App-link"
-          >
-            Vamos a aprender react
-          </p>
+          <Learn framework='ReactJs' />
         </header>
       </div>
     );
