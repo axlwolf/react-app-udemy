@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 
 const Wellcome = (props) => {
-  console.log(props);
   return <h1>Bienvenido {props.name} a este curso</h1>
 }
 
@@ -19,11 +18,19 @@ class Learn extends Component {
 
 class Text extends Component {
   render() {
-    const {text, number, boolean, numbersArray, objWithInfo} = this.props;
+    const {
+           text, 
+           number,
+           boolean, 
+           numbersArray,
+           objWithInfo,
+           multiply,
+           title} = this.props;
     const textoAMostrar = boolean ? 'Cierto' : 'Falso';
-    const mappedNumbers = numbersArray.map(n => n * 2);
+    const mappedNumbers = numbersArray.map(multiply);
     return (
       <div>
+        {title}
         <p>{text}</p>
         <p>{number}</p>
         <p>{textoAMostrar}</p>
@@ -61,7 +68,12 @@ class App extends Component {
             }
             number={2} 
             text='Usando props para pasar esta cadena de texto'
-            boolean={true} />
+            boolean={true}
+            multiply={
+              (number) => number * 2
+            }
+            title={<h1>Que paso con esta propiedad</h1>}
+            />
         </header>
       </div>
     );
