@@ -17,6 +17,30 @@ class Learn extends Component {
   }
 }
 
+class Text extends Component {
+  render() {
+    const {text, number, boolean, numbersArray, objWithInfo} = this.props;
+    const textoAMostrar = boolean ? 'Cierto' : 'Falso';
+    const mappedNumbers = numbersArray.map(n => n * 2);
+    return (
+      <div>
+        <p>{text}</p>
+        <p>{number}</p>
+        <p>{textoAMostrar}</p>
+        <p>
+          {mappedNumbers.join(', ')}
+        </p>
+        <p>
+          {objWithInfo.key}
+        </p>
+        <ul>
+          
+        </ul>
+      </div>
+    )
+  }
+}
+
 class App extends Component {
   render() {
     return (
@@ -25,6 +49,19 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Wellcome name='Axel'/>
           <Learn framework='ReactJs' />
+          <Text 
+            numbersArray={
+              [1,2,3,4,5]
+            }
+            objWithInfo = {
+              {
+                key: 'First value',
+                key2: 'otherValue'
+              }
+            }
+            number={2} 
+            text='Usando props para pasar esta cadena de texto'
+            boolean={true} />
         </header>
       </div>
     );
