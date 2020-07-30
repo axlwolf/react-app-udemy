@@ -3,11 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 
 class Counter extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      counter: 1
+      counter: this.props.initCounter
     };
+    this.changeState = this.changeState.bind(this);
+  }
+
+  changeState() {
     setInterval(() => {
       this.setState({
        counter: this.state.counter + 1
@@ -15,9 +19,27 @@ class Counter extends Component {
      }, 1000);
   }
 
+  componentDidMount() {
+    this.changeState();
+  }
+
   render() {
     const {counter} = this.state;
-    return <span>{counter}</span>
+    return <NumberCounter number={counter} />
+  }
+}
+
+Counter.defaultProps = {
+  initCounter: 10
+}
+
+class NumberCounter extends Component {
+  render() {
+    return(
+      <span>
+        {this.props.number}
+      </span>
+    )
   }
 }
 
@@ -27,7 +49,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Counter></Counter>
+          <Counter initCounter={100}></Counter>
         </header>
       </div>
     );
